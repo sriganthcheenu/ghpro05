@@ -6,6 +6,19 @@ const dbUser = process.env.MONGODB_USERNAME;
 const dbPassword = process.env.MONGODB_PASSWORD;
 const dbName = process.env.MONGODB_DB_NAME;
 
+// Validate required environment variables
+if (!dbUser || !dbPassword) {
+  console.error('ERROR: MongoDB credentials are missing!');
+  console.error('Please set MONGODB_USERNAME and MONGODB_PASSWORD environment variables.');
+  process.exit(1);
+}
+
+if (!connectionProtocol || !clusterAddress || !dbName) {
+  console.error('ERROR: MongoDB connection details are incomplete!');
+  console.error('Required: MONGODB_CONNECTION_PROTOCOL, MONGODB_CLUSTER_ADDRESS, MONGODB_DB_NAME');
+  process.exit(1);
+}
+
 const uri = `${connectionProtocol}://${dbUser}:${dbPassword}@${clusterAddress}/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
