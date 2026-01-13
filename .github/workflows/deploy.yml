@@ -15,7 +15,7 @@ jobs:
       image: node:20
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb # Container service name
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
       # MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       # MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       MONGODB_USERNAME: root
